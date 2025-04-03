@@ -20,6 +20,7 @@ import android.app.Application
 import com.cisco.android.common.logger.Logger
 import com.splunk.rum.integration.agent.api.SplunkRum.Companion.install
 import com.splunk.rum.integration.agent.api.SplunkRum.Companion.instance
+import com.splunk.rum.integration.agent.api.attributes.GlobalAttributes
 import com.splunk.rum.integration.agent.api.internal.SplunkRumAgentCore
 import com.splunk.rum.integration.agent.api.subprocess.SubprocessDetector
 import com.splunk.rum.integration.agent.api.user.User
@@ -41,6 +42,7 @@ class SplunkRum private constructor(
     val state: IState = State(agentConfiguration),
 ) {
     val user: User = User(userManager)
+    val globalAttributes: GlobalAttributes = agentConfiguration.globalAttributes
 
     companion object {
         private val noop = SplunkRum(

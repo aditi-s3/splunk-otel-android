@@ -36,12 +36,14 @@ class App : Application() {
 
         // uncomment the below and also the field passed into agentConfiguration to test global
         // attribute setting at agent initialization
-//        val globalAttributes = GlobalAttributes()
-//        globalAttributes["name"] = "John"
-//        globalAttributes["surname"] = "Doe"
-//        globalAttributes["age"] = 32
-//        globalAttributes["email"] = "john.doe@example.com"
-//        globalAttributes["isValid"] = true
+        val globalAttributes = GlobalAttributes()
+        globalAttributes["name"] = "John"
+        globalAttributes["age"] = 32
+        globalAttributes["isValid"] = true
+
+        val globalAttributes2 = GlobalAttributes()
+        globalAttributes2["location"] = "heaven"
+        globalAttributes2["weight"] = 89
 
         val agent = SplunkRum.install(
             application = this,
@@ -52,7 +54,8 @@ class App : Application() {
                 ),
                 appName = "Android demo app",
                 enableDebugLogging = true,
-//                globalAttributes = globalAttributes
+                globalAttributes = globalAttributes,
+                globalAttributes2 = globalAttributes2
             ),
             moduleConfigurations = arrayOf(
                 InteractionsModuleConfiguration(
